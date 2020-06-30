@@ -104,29 +104,29 @@ services:
       depends_on:
         - db
 
-  #######################################
-  # Konga
-  #######################################
-  # konga:
-  #   image: pantsel/konga
-  #   environment:
-  #     TOKEN_SECRET: km1GUr4RkcQD7DewhJPNXrCuZwcKmqjb
-  #     DB_ADAPTER: postgres
-  #     DB_HOST: db
-  #     DB_PORT: 5432
-  #     DB_DATABASE: konga_db
-  #     DB_USER: kong
-  #     DB_PASSWORD: qWERTY1q
-  #     NODE_ENV: development
-  #     KONGA_HOOK_TIMEOUT: 10000
-  #   restart: on-failure
-  #   ports:
-  #     - 9000:1337
-  #   depends_on:
-  #     - db
-  #     - konga-prepare
-  #   networks:
-  #     - kong-net
+    #######################################
+    # Konga
+    #######################################
+    konga:
+      image: pantsel/konga
+      environment:
+        TOKEN_SECRET: km1GUr4RkcQD7DewhJPNXrCuZwcKmqjb
+        DB_ADAPTER: postgres
+        DB_HOST: db
+        DB_PORT: 5432
+        DB_DATABASE: konga_db
+        DB_USER: kong
+        DB_PASSWORD: qWERTY1q
+        NODE_ENV: development
+        KONGA_HOOK_TIMEOUT: 10000
+      restart: on-failure
+      ports:
+        - 9000:1337
+      depends_on:
+        - db
+        - konga-prepare
+      networks:
+        - kong-net
     
     # konga:
     #   image: pantsel/konga
