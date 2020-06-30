@@ -81,10 +81,13 @@ services:
         KONG_PROXY_ERROR_LOG: ${KONG_PROXY_ERROR_LOG}
         KONG_ADMIN_ERROR_LOG: ${KONG_ADMIN_ERROR_LOG}
         #KONG_ADMIN_LISTEN: ${KONG_ADMIN_LISTEN}
+        KONG_PROXY_LISTEN: 0.0.0.0:8000
+        KONG_PROXY_LISTEN_SSL: 0.0.0.0:8443
+        KONG_ADMIN_LISTEN: 0.0.0.0:8001
       restart: on-failure
-      ports:
-      - $KONG_PROXY_PORT:8000
-      - $KONG_PROXY_SSL_PORT:8443
+      # ports:
+      # - $KONG_PROXY_PORT:8000
+      # - $KONG_PROXY_SSL_PORT:8443
         #- $KONG_PROXY_ADMIN_API_PORT:8001
         #- $KONG_PROXY_ADMIN_SSL_API_PORT:8444
       admin_listen: 127.0.0.1:8001
