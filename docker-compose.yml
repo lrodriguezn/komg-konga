@@ -25,9 +25,9 @@ services:
       retries: 3
       stdin_open: true
       tty: true
-      volumes:
+    volumes:
       - persist_volume:/var/lib/postgresql/data
-      networks:
+    networks:
       - kong-net
 
     # db:
