@@ -86,6 +86,7 @@ services:
       restart: on-failure
       depends_on:
         - db
+        - kong-migrations
       # ports:
       # - $KONG_PROXY_PORT:8000
       # - $KONG_PROXY_SSL_PORT:8443
@@ -107,6 +108,9 @@ services:
         - db
       depends_on:
         - db
+        - kong-migrations
+        - kong
+
 
     #######################################
     # Konga
@@ -129,6 +133,7 @@ services:
       depends_on:
         - db
         - konga-prepare
+        - kong
       networks:
         - kong-net
     
