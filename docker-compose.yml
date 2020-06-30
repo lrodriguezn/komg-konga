@@ -39,7 +39,7 @@ services:
         # POSTGRES_USERS: ${KONG_DB_USERNAME}:${KONG_DB_PASSWORD}|${KONGA_DB_USERNAME}:${KONGA_DB_PASSWORD}
         # POSTGRES_DATABASES: ${KONG_DB_NAME}:${KONG_DB_USERNAME}|${KONGA_DB_NAME}:${KONGA_DB_USERNAME}
       healthcheck:
-        test: ["CMD", "pg_isready", "-U", "${KONG_DB_USERNAME}"]
+        test: ["CMD", "pg_isready", "-U", "postgres"]
         interval: 30s
         timeout: 30s
         retries: 3
