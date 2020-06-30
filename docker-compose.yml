@@ -90,19 +90,19 @@ services:
       networks:
       - kong-net
 
-  #######################################
-  # Konga database prepare
-  #######################################
-  konga-prepare:
-    image: pantsel/konga:next
-    command: "-c prepare -a postgres -u postgresql://kong:qWERTY1q@db:5432/konga_db"
-    networks:
-      - kong-net
-    restart: on-failure
-    links:
-      - db
-    depends_on:
-      - db
+    #######################################
+    # Konga database prepare
+    #######################################
+    konga-prepare:
+      image: pantsel/konga:next
+      command: "-c prepare -a postgres -u postgresql://kong:qWERTY1q@db:5432/konga_db"
+      networks:
+        - kong-net
+      restart: on-failure
+      links:
+        - db
+      depends_on:
+        - db
 
   #######################################
   # Konga
