@@ -95,7 +95,7 @@ services:
     #######################################
     konga-prepare:
       image: pantsel/konga:next
-      command: "-c prepare -a postgres -u postgresql://kong:qWERTY1q@db:5432/konga_db"
+      command: "-c prepare -a postgres -u postgresql://${KONG_DB_USERNAME}:${KONG_DB_PASSWORD}@${KONG_DB_HOST}:${KONG_DB_PORT}/${KONGA_DB_NAME}"
       networks:
         - kong-net
       restart: on-failure
@@ -110,18 +110,18 @@ services:
     konga:
       image: pantsel/konga
       environment:
-        TOKEN_SECRET: km1GUr4RkcQD7DewhJPNXrCuZwcKmqjb
-        DB_ADAPTER: postgres
+        TOKEN_SECRET: ${KONGA_TOKEN_SECRET}
+        DB_ADAPTER:  ${KONG_DATABASE}
         DB_HOST: db
-        DB_PORT: 5432
-        DB_DATABASE: konga_db
-        DB_USER: kong
-        DB_PASSWORD: qWERTY1q
+        DB_PORT: ${KONGA_DB_PORT}
+        DB_DATABASE: ${KONGA_DB_NAME}
+        DB_USER: ${KONGA_DB_USERNAME}
+        DB_PASSWORD: ${KONGA_DB_PASSWORD}
         NODE_ENV: development
         KONGA_HOOK_TIMEOUT: 10000
       restart: on-failure
       ports:
-        - 9000:1337
+        - $KONGA_PORT:1337
       depends_on:
         - db
         - konga-prepare
