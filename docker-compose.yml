@@ -32,6 +32,7 @@ services:
 
     db:
       image: postgres:9.6
+      container_name: sever_db
       environment:
         POSTGRES_DB: ${KONG_DB_NAME}
         POSTGRES_USER: ${KONG_DB_USERNAME}
