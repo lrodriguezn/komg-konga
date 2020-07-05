@@ -93,8 +93,8 @@ services:
         - $KONG_PROXY_SSL_PORT:8443
         #- $KONG_PROXY_ADMIN_API_PORT:8001
         #- $KONG_PROXY_ADMIN_SSL_API_PORT:8444
-        -127.0.0.1:8001:8001
-        -127.0.0.1:8444:8444        
+        - 127.0.0.1:8001:8001
+        - 127.0.0.1:8444:8444        
       networks:
       - kong-net
 
