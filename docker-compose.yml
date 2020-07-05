@@ -82,8 +82,8 @@ services:
         KONG_PROXY_ERROR_LOG: ${KONG_PROXY_ERROR_LOG}
         KONG_ADMIN_ERROR_LOG: ${KONG_ADMIN_ERROR_LOG}
         KONG_ADMIN_LISTEN: ${KONG_ADMIN_LISTEN}
-        #KONG_PROXY_LISTEN: 127.0.0.1:8000
-        #KONG_PROXY_LISTEN_SSL: 127.0.0.1:8443
+        KONG_PROXY_LISTEN: 127.0.0.1:8000
+        KONG_PROXY_LISTEN_SSL: 127.0.0.1:8443
       restart: on-failure
       depends_on:
         - db
